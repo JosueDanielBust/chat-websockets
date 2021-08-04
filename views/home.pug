@@ -1,0 +1,23 @@
+doctype html
+html( lang="en" )
+  head
+    title Chat
+    meta( charset='UTF-8' )
+    meta( name='viewport' content='width=device-width, initial-scale=1.0' )
+    meta( http-equiv='X-UA-Compatible' content='ie=edge' )
+    link( rel="stylesheet", href='/assets/css/main.css' )
+
+  body
+    #chat
+      section.messages
+        p( v-for="message in messages" :key="message.client" )
+          span [{{ message.client }}]:
+          span {{ message.message }}
+      section.form
+        .form-control.form-control-input
+          input( type='text' name='msg' id='msg' v-model='msg' placeholder='Message' )
+        .form-control.form-control-button
+          button.button( v-on:click='sendMessage( msg )') Send
+
+    script( src='/assets/js/vue.js' )
+    script( src='/assets/js/main.js' )
